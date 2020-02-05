@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  postgres-12:
+    image: postgres:12
+    container_name: postgres-12
+    ports:
+      - 127.0.0.1:5432:5432
+    environment:
+      - "POSTGRES_USER=cuba"
+      - "POSTGRES_PASSWORD=cuba"
+    volumes:
+      - ./db-data/postgres-12:/var/lib/postgresql
+    restart: unless-stopped
+
+  mssql-2017:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql-2017
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "SA_PASSWORD=saPass1234"
+    ports:
+      - 127.0.0.1:1433:1433
+    volumes:
+      - ./db-data/mssql-2017:/var/opt/mssql
+    restart: unless-stopped
+
+  mysql-5:
+    image: mysql:5
+    container_name: mysql-5
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      - "MYSQL_ROOT_PASSWORD=cuba"
+    volumes:
+      - ./db-data/mysql-5:/var/lib/mysql
+
+  adminer:
+    image: adminer:4
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:81:8080
