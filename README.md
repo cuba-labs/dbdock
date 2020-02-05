@@ -6,8 +6,8 @@
 * `cd dbdock`
 * run required database:
   - `docker-compose up -d postgres-12`
-  - `docker-compose up -d mssql-2017` (by default password is `saPass1234`)
-  - `docker-compose up -d mysql-5`
+  - `docker-compose up -d mssql-2017` (`sa/saPass1234`)
+  - `docker-compose up -d mysql-5` (`root/cuba`)
 * or run everything (not recommended):
   - `docker-compose up -d`
 
